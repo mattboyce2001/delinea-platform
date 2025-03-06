@@ -12,6 +12,20 @@
     Tested with version 1.0.107
     logPath variable below used for troubleshooting if required, file is written to this path with errors.
     A file for each server will be created, and overwritten on each run.
+
+    Note: 
+
+    Newer versions of DBATools require full trust on certificates, Version 1.0.107 would not enforce. For testing purposes the commands below can be used.
+
+    Set trust on execution of the script only (Insert into script)
+    
+    Set-DbatoolsInsecureConnection -SessionOnly
+
+    Execute on DE's to set trust
+        
+    Set-DbatoolsConfig -FullName sql.connection.trustcert -Value $true -Register
+    Set-DbatoolsConfig -FullName sql.connection.encrypt -Value $false -Register
+    
 #>
 $logPath = 'C:\scripts'
 
